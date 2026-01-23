@@ -3,7 +3,7 @@ using namespace std;
 
 
 int add(int num1, int num2){
-  return num1+num2;
+  return num1+num2;x
 }
 int sub(int num1, int num2){
   return num1-num2;
@@ -20,7 +20,10 @@ int ls(int num1, int num2){
 int rs(int num1, int num2){
   return num1>>num2;
 }
-
+int xor(int num1, int num2
+{
+  return num1 ^ num2;
+}
 
 
 int main() 
@@ -33,6 +36,7 @@ int main()
     cout<<"mul = "<<mul(x,y)<<endl;
     cout<<"ls = "<<ls(x,y)<<endl;
     cout<<"rs = "<<rs(x,y)<<endl;
+    cout<<"XOR = "<<xor(x,y)<<endl;
 }
 
 
