@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        vector<int> v1;
+        vector<int> v2;
+        int size=nums.size();
+        for(int i=0; i<size; i++){
+            if(nums[i]!=0){
+                v1.push_back(nums[i]);
+            }
+            else{
+                v2.push_back(nums[i]);
+            }
+        }
+        v1.insert(v1.end(), v2.begin(), v2.end());
+        for(int i=0; i<size; i++){
+            nums[i]=v1[i];
+        }
+    }
+};
