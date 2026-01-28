@@ -1,0 +1,73 @@
+//optimised way
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+       sort(nums.begin(), nums.end());
+    int n = nums.size();
+    vector<vector<int>> res;
+
+    for (int i = 0; i < n - 2; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) continue; // skip duplicate i
+
+        int j = i + 1, k = n - 1;
+
+        while (j < k) {
+            int sum = nums[i] + nums[j] + nums[k];
+
+            if (sum == 0) {
+                res.push_back({nums[i], nums[j], nums[k]});
+
+                // skip duplicate j and k
+                while (j < k && nums[j] == nums[j + 1]) j++;
+                while (j < k && nums[k] == nums[k - 1]) k--;
+
+                j++;
+                k--;
+            }
+            else if (sum < 0) {
+                j++;
+            }
+            else {
+                k--;
+            }
+        }
+    }
+    return res;
+    }
+};
+
+
+
+
+//better 
+sort(nums.begin(), nums.end());
+vector<vector<int>> res;
+set<vector<int>> st;
+
+for(int i = 0; i < size - 2; i++) {
+    int j = i + 1;
+    int k = size - 1;
+
+    while(j < k) {
+        int sum = nums[i] + nums[j] + nums[k];
+
+        if(sum == 0) {
+            st.insert({nums[i], nums[j], nums[k]});
+            j++;
+            k--;
+        }
+        else if(sum > 0) {
+            k--;
+        }
+        else {
+            j++;
+        }
+    }
+}
+
+for(auto it : st) {
+    res.push_back(it);
+}
+
+return res;
