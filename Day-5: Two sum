@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+vector<int> twosum(vector<int>& arr, int target){
+  int size=arr.size();
+  unordered_map<int, int> mp;
+  for(int i=0; i<size; i++){
+    int diff=target-arr[i];
+    if(mp.find(diff)!=mp.end()){
+      return {mp[diff], i};
+    }
+    mp[arr[i]]=i;
+  }
+  return{};
+}
+
+
+int main() 
+{
+    int size;
+    cin>>size;
+     vector<int> arr(size);
+    for(int i=0; i<size; i++){
+      cin>>arr[i];
+    }
+    int target;
+    cin>>target;
+    vector<int> res=twosum(arr,target);
+    for(int x:res){
+      cout<<x<<" ";
+    }
+    
+    return 0;
+}
